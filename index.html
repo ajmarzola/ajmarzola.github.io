@@ -1,10 +1,65 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Em Consutrução</title>
-	<meta charset="utf-8" />
+    <title>Anderson Marzola - Technologist in Data Processing</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Anderson Marzola">
+    <meta name="created" content="20160715;00000000">
+    <meta name="changedby" content="Anderson Marzola">
+    <meta name="changed" content="20160715;00000000">
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/calcAge.js"></script>
 </head>
 <body>
-    <p>Em Breve, Um Site</p>
+    <header>
+        <h1>Anderson Marzola</h1>
+        <ul>
+            <li><b>Phone:</b></li>
+            <li><b>e-Mail:</b> <a href="mailto:ajmarzola@gmail.com?subject=About Your Resume&amp;bcc=anderson.marzola@fatec.sp.gov.br&amp;body=Hello, I want to talk with you about you resume.">ajmarzola@gmail.com</a></li>
+            <li><b>Localization:São Paulo - SP - Brazil</li>
+        </ul>
+    </header>
+    <article>
+        <section>
+            <h2>About</h2>
+            <ul>
+                <li><b>Age:</b> <label id="lbAge" /></li>
+                <li><b>Marital Status:</b> Single</li>
+                <li>
+                    <b>Interests:</b>
+                    <ul>
+                        <li>Music</li>
+                        <li>Codding</li>
+                        <li>Networking</li>
+                        <li>New Technologies</li>
+                        <li>Open Source Softwares</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h2>Goals</h2>
+            <ul>
+                <li>System Analisys</li>
+                <li>System Development</li>
+            </ul>
+        </section>
+        <h2>Work Experience</h2>
+        <ul>
+            <li>
+                <h3>Função Informática</h3>
+                <p>System Developer Pl</p>
+            </li>
+        </ul>
+    </article>
+    <footer>
+	<p>Em Construção</p>
+    </footer>
+    <script language="javascript">
+        $(document).ready(function () {
+            age = calcAge().toString();
+            $('#lbAge').text(age);
+        });
+    </script>
 </body>
 </html>
