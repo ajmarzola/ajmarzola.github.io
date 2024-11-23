@@ -1,14 +1,12 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
-/.vs/ajmarzola.github.io/CopilotIndices/17.12.31.40377/CodeChunks.db
-/.vs/ajmarzola.github.io/CopilotIndices/17.12.31.40377/CodeChunks.db-shm
-/.vs/ajmarzola.github.io/CopilotIndices/17.12.31.40377/CodeChunks.db-wal
-/.vs/ajmarzola.github.io/CopilotIndices/17.12.31.40377/SemanticSymbols.db
-/.vs/ajmarzola.github.io/CopilotIndices/17.12.31.40377/SemanticSymbols.db-shm
-/.vs/ajmarzola.github.io/CopilotIndices/17.12.31.40377/SemanticSymbols.db-wal
-/.vs/ajmarzola.github.io/FileContentIndex/4102750f-6e55-4b2d-b579-08ce8fd26094.vsidx
-/.vs/ajmarzola.github.io/v17/.wsuo
-/.vs/ajmarzola.github.io/v17/DocumentLayout.json
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+/.vs/ajmarzola.github.io/CopilotIndices/17.12.31.40377
+/.vs/ajmarzola.github.io/FileContentIndex
+/.vs/ajmarzola.github.io/v17
 /.vs/slnx.sqlite
+/.vs/slnx.sqlite-journal
+/.vs/VSWorkspaceState.json
+/.vs/VSWorkspaceState.json
