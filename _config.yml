@@ -18,19 +18,34 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Anderson Marzola - System Architect
-email: ajmarzola@gmail.com
-description: >- # this means to ignore newlines until "baseurl:"
-  In this blog, my goal is more than just sharing technical knowledge. I want to create an environment for learning and exchanging experiences, covering everything from practical tips and tutorials to discussions about software architecture and technological trends.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://ajmarzola.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: tbn_pepe
-github_username:  ajmarzola
+title:              Anderson Marzola - System Architect
+email:              ajmarzola@gmail.com
+description:        In this blog, my goal is more than just sharing technical knowledge. I want to create an environment for learning and exchanging experiences, covering everything from practical tips and tutorials to discussions about software architecture and technological trends.
+author:             Start Bootstrap
+baseurl:            ""
+url:                "https://ajmarzola.github.io/"
+
+# Social Profiles
+twitter_username:   tbn_pepe
+github_username:    ajmarzola
+facebook_username:  ajmarzola
+instagram_username: ajmarzola
+linkedin_username:  ajmarzola
+
+# Add your google-analytics ID here to activate google analytics
+google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
 
 # Build settings
-theme: minima
+markdown:           kramdown
+paginate:           5
+paginate_path:      "/posts/page:num/"
+
+# Build settings
+theme: jekyll-theme-clean-blog
 plugins:
   - jekyll-feed
+  - jekyll-paginate
+  - jekyll-sitemap ## Uncomment this line to silently generate a sitemaps.org compliant sitemap for your Jekyll site
 
 # Exclude from processing.
 # The following items will not be processed, by default.

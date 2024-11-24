@@ -1,8 +1,9 @@
 ---
 layout: post
 title:  "Hello, World!"
+subtitle: First time here
 date:   2024-11-23 12:14:14 -0300
-categories: jekyll update
+background: '/img/bg-post.jpg'
 ---
 #Welcome to my tech space!
 

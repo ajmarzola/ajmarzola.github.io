@@ -1,8 +1,9 @@
 ---
 layout: post
 title:  "Developing a CRUD API for Products with ASP.NET Core"
+subtitle: e-Commerce series
 date:   2024-11-24 08:30:57 -0300
-categories: webapi, .net, c#, sql server
+background: '/img/bg-post.jpg'
 ---
 #Developing a CRUD API for Products with ASP.NET Core: Lessons Learned, Common Errors, and Solutions
 
