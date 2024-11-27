@@ -1,4 +1,163 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-11-24T09:06:57-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Anderson Marzola - System Architect</title><subtitle>In this blog, my goal is more than just sharing technical knowledge. I want to create an environment for learning and exchanging experiences, covering everything from practical tips and tutorials to discussions about software architecture and technological trends.</subtitle><entry><title type="html">Developing a CRUD API for Products with ASP.NET Core</title><link href="http://localhost:4000/webapi,/.net,/c%23,/sql/server/2024/11/24/developing-a-crud-api-for-products-with-aspnetcore.html" rel="alternate" type="text/html" title="Developing a CRUD API for Products with ASP.NET Core" /><published>2024-11-24T08:30:57-03:00</published><updated>2024-11-24T08:30:57-03:00</updated><id>http://localhost:4000/webapi,/.net,/c%23,/sql/server/2024/11/24/developing-a-crud-api-for-products-with-aspnetcore</id><content type="html" xml:base="http://localhost:4000/webapi,/.net,/c%23,/sql/server/2024/11/24/developing-a-crud-api-for-products-with-aspnetcore.html"><![CDATA[<p>#Developing a CRUD API for Products with ASP.NET Core: Lessons Learned, Common Errors, and Solutions</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-11-26T22:07:14-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Anderson Marzola - System Architect</title><subtitle>In this blog, my goal is more than just sharing technical knowledge. I want to create an environment for learning and exchanging experiences, covering everything from practical tips and tutorials to discussions about software architecture and technological trends.</subtitle><author><name>Start Bootstrap</name></author><entry><title type="html">Developing a CRUD API for Products with ASP.NET Core</title><link href="http://localhost:4000/2024/11/25/a-journey-to-full-test-coverage.html" rel="alternate" type="text/html" title="Developing a CRUD API for Products with ASP.NET Core" /><published>2024-11-25T19:44:22-03:00</published><updated>2024-11-25T19:44:22-03:00</updated><id>http://localhost:4000/2024/11/25/a-journey-to-full-test-coverage</id><content type="html" xml:base="http://localhost:4000/2024/11/25/a-journey-to-full-test-coverage.html"><![CDATA[<h1 id="from-26-to-100-a-journey-to-full-test-coverage"><strong>From 26% to 100%: A Journey to Full Test Coverage</strong></h1>
+
+<p>In the world of software development, test coverage is a critical metric that reflects the effectiveness of your testing strategy. However, as developers, we often find ourselves navigating the nuances of <strong>line coverage</strong> and <strong>branch coverage</strong>, and the gap between them can reveal untold stories about our code.</p>
+
+<p>This article explores how a project with <strong>26% line coverage</strong> and <strong>69% branch coverage</strong> tells a deeper tale, the practical implications of these metrics, and actionable strategies to achieve the coveted <strong>100% coverage</strong>.</p>
+
+<hr />
+
+<h2 id="the-starting-point"><strong>The Starting Point</strong></h2>
+<p>Our project began with the following test coverage metrics:</p>
+<ul>
+  <li><strong>Line Coverage:</strong> 26%</li>
+  <li><strong>Branch Coverage:</strong> 69%</li>
+</ul>
+
+<p>These numbers sparked both concern and curiosity. How could we have tested 69% of our logical paths while executing only 26% of our lines of code? Diving into the details, we discovered that our tests focused heavily on <strong>branch logic</strong>—decision points like <code class="language-plaintext highlighter-rouge">if</code> conditions and <code class="language-plaintext highlighter-rouge">switch</code> cases—but missed other critical parts of the codebase.</p>
+
+<hr />
+
+<h2 id="understanding-the-metrics"><strong>Understanding the Metrics</strong></h2>
+
+<h3 id="1-line-coverage"><strong>1. Line Coverage</strong></h3>
+<p>Measures the percentage of lines of code that are executed during testing.</p>
+<ul>
+  <li><strong>Low line coverage (26%)</strong> indicates many parts of the code were never executed, including non-conditional statements.</li>
+  <li>This can result in untested initialization code, helper methods, and error handling blocks.</li>
+</ul>
+
+<h3 id="2-branch-coverage"><strong>2. Branch Coverage</strong></h3>
+<p>Focuses on logical paths, ensuring both the <strong>true</strong> and <strong>false</strong> branches of conditional statements are evaluated.</p>
+<ul>
+  <li><strong>High branch coverage (69%)</strong> means a substantial portion of decision logic was tested, but not necessarily the full extent of its execution.</li>
+</ul>
+
+<h3 id="example"><strong>Example</strong></h3>
+<p>Consider the following code:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Positive"</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="k">else</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Negative"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"Done"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ul>
+  <li>A test with <code class="language-plaintext highlighter-rouge">x = 1</code> and <code class="language-plaintext highlighter-rouge">x = -1</code> will achieve <strong>100% branch coverage</strong> because both the <code class="language-plaintext highlighter-rouge">if</code> and <code class="language-plaintext highlighter-rouge">else</code> branches are executed.</li>
+  <li>However, <strong>line coverage</strong> might be lower if <code class="language-plaintext highlighter-rouge">Console.WriteLine("Done");</code> is never reached during tests.</li>
+</ul>
+
+<hr />
+
+<h2 id="the-challenges"><strong>The Challenges</strong></h2>
+
+<h3 id="1-gaps-in-line-coverage"><strong>1. Gaps in Line Coverage</strong></h3>
+<p>Our test suite skipped parts of the code outside conditional logic. For instance:</p>
+<ul>
+  <li>Initialization routines were left untested.</li>
+  <li>Edge cases, such as exception handling, were ignored.</li>
+</ul>
+
+<h3 id="2-over-reliance-on-branch-testing"><strong>2. Over-reliance on Branch Testing</strong></h3>
+<p>While the logical branches were adequately tested, their consequences—like calls to external APIs or database interactions—remained unchecked.</p>
+
+<hr />
+
+<h2 id="action-plan-achieving-100-coverage"><strong>Action Plan: Achieving 100% Coverage</strong></h2>
+<p>Reaching 100% coverage requires addressing both metrics systematically:</p>
+
+<h3 id="1-target-uncovered-lines"><strong>1. Target Uncovered Lines</strong></h3>
+<p>Analyze the coverage report to identify lines missed during tests:</p>
+<ul>
+  <li>Add tests to execute helper methods and initialization code.</li>
+  <li>Cover all paths that lead to those lines, even in non-critical scenarios.</li>
+</ul>
+
+<h3 id="2-expand-branch-testing"><strong>2. Expand Branch Testing</strong></h3>
+<p>Ensure all logical branches are <strong>fully explored</strong>:</p>
+<ul>
+  <li>Test not only the decision points but also their side effects.</li>
+  <li>Cover nested conditions and boundary values comprehensively.</li>
+</ul>
+
+<h3 id="3-test-error-handling"><strong>3. Test Error Handling</strong></h3>
+<p>Write tests that deliberately trigger exceptions:</p>
+<ul>
+  <li>Simulate failures such as database connection errors or invalid inputs.</li>
+  <li>Ensure <code class="language-plaintext highlighter-rouge">try-catch</code> blocks and fallback logic are exercised.</li>
+</ul>
+
+<h3 id="4-automate-coverage-monitoring"><strong>4. Automate Coverage Monitoring</strong></h3>
+<p>Incorporate tools like <strong>ReportGenerator</strong> and CI/CD pipelines to:</p>
+<ul>
+  <li>Track coverage metrics continuously.</li>
+  <li>Fail builds that drop below the expected threshold.</li>
+</ul>
+
+<h3 id="5-practice-test-driven-development-tdd"><strong>5. Practice Test-Driven Development (TDD)</strong></h3>
+<p>By writing tests before the implementation:</p>
+<ul>
+  <li>You naturally ensure all lines of the new code are executed.</li>
+  <li>TDD forces coverage considerations upfront.</li>
+</ul>
+
+<hr />
+
+<h2 id="the-payoff"><strong>The Payoff</strong></h2>
+<p>By methodically addressing these gaps, our project began to evolve:</p>
+<ol>
+  <li><strong>Line Coverage</strong> steadily rose as we executed untested parts of the code.</li>
+  <li><strong>Branch Coverage</strong> improved further as we explored more nuanced conditions.</li>
+  <li>Both metrics converged toward 100%, signaling robust test coverage and fewer hidden bugs.</li>
+</ol>
+
+<hr />
+
+<h2 id="suggestions-for-next-steps"><strong>Suggestions for Next Steps</strong></h2>
+<ol>
+  <li><strong>Focus on Maintainability:</strong>
+    <ul>
+      <li>As tests grow, ensure they are well-documented and easy to modify.</li>
+    </ul>
+  </li>
+  <li><strong>Prioritize Code Quality:</strong>
+    <ul>
+      <li>Coverage should be paired with quality metrics like cyclomatic complexity to avoid over-testing simple paths.</li>
+    </ul>
+  </li>
+  <li><strong>Embrace Mutation Testing:</strong>
+    <ul>
+      <li>Tools like <strong>Stryker.NET</strong> can validate that your tests not only run but also catch intentional bugs.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="conclusion"><strong>Conclusion</strong></h2>
+<p>Test coverage is more than a number; it’s a narrative of how thoroughly you’ve validated your code. While <strong>26% line coverage</strong> and <strong>69% branch coverage</strong> highlighted gaps in our approach, they also served as a roadmap for improvement. By leveraging tools, expanding tests, and embracing best practices, we can transform these metrics into a testament to software excellence.</p>
+
+<p>With persistence and a clear strategy, the journey from <strong>26% to 100%</strong> becomes an achievable—and immensely rewarding—goal.</p>
+
+<hr />
+
+<p><img src="https://avatars.githubusercontent.com/u/8000175?s=400&amp;v=4" alt="Anderson Marzola" width="128" height="128" style="border-radius: 50%;" /></p>
+
+<p><strong>Anderson Marzola</strong></p>
+
+<p>I’m a developer with over 10 years of experience, an expert in <strong>.NET</strong> and <strong>SQL Server</strong>, passionate about technology, innovation and knowledge sharing. In this blog, I share tips, tutorials and insights from the world of programming to help other developers grow.</p>
+
+<p>💡 Let’s connect?</p>
+<ul>
+  <li>💼 <a href="https://linkedin.com/in/ajmarzola">My LinkedIn</a></li>
+  <li>💻 <a href="https://github.com/ajmarzola">My GitHub</a></li>
+  <li>✉️ <a href="mailto:ajmarzola@gmail.com">Get in touch</a></li>
+</ul>]]></content><author><name>Start Bootstrap</name></author><summary type="html"><![CDATA[From 26% to 100%: A Journey to Full Test Coverage]]></summary></entry><entry><title type="html">Developing a CRUD API for Products with ASP.NET Core</title><link href="http://localhost:4000/2024/11/24/developing-a-crud-api-for-products-with-aspnetcore.html" rel="alternate" type="text/html" title="Developing a CRUD API for Products with ASP.NET Core" /><published>2024-11-24T08:30:57-03:00</published><updated>2024-11-24T08:30:57-03:00</updated><id>http://localhost:4000/2024/11/24/developing-a-crud-api-for-products-with-aspnetcore</id><content type="html" xml:base="http://localhost:4000/2024/11/24/developing-a-crud-api-for-products-with-aspnetcore.html"><![CDATA[<p>#Developing a CRUD API for Products with ASP.NET Core: Lessons Learned, Common Errors, and Solutions</p>
 
 <p>Building a CRUD API for managing products is a fundamental exercise in ASP.NET Core development. While it may seem straightforward, this process reveals technical challenges that test our ability to handle real-world development cycles. In this article, we will review the API development process, highlight common errors and their solutions, and provide suggestions for future improvements.</p>
 
@@ -144,7 +303,7 @@ Set up a continuous integration and deployment pipeline with GitHub Actions or A
   <li>💼 <a href="https://linkedin.com/in/ajmarzola">My LinkedIn</a></li>
   <li>💻 <a href="https://github.com/ajmarzola">My GitHub</a></li>
   <li>✉️ <a href="mailto:ajmarzola@gmail.com">Get in touch</a></li>
-</ul>]]></content><author><name></name></author><category term="webapi," /><category term=".net," /><category term="c#," /><category term="sql" /><category term="server" /><summary type="html"><![CDATA[#Developing a CRUD API for Products with ASP.NET Core: Lessons Learned, Common Errors, and Solutions]]></summary></entry><entry><title type="html">Hello, World!</title><link href="http://localhost:4000/jekyll/update/2024/11/23/hello-word.html" rel="alternate" type="text/html" title="Hello, World!" /><published>2024-11-23T12:14:14-03:00</published><updated>2024-11-23T12:14:14-03:00</updated><id>http://localhost:4000/jekyll/update/2024/11/23/hello-word</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2024/11/23/hello-word.html"><![CDATA[<p>#Welcome to my tech space!</p>
+</ul>]]></content><author><name>Start Bootstrap</name></author><summary type="html"><![CDATA[#Developing a CRUD API for Products with ASP.NET Core: Lessons Learned, Common Errors, and Solutions]]></summary></entry><entry><title type="html">Hello, World!</title><link href="http://localhost:4000/2024/11/23/hello-word.html" rel="alternate" type="text/html" title="Hello, World!" /><published>2024-11-23T12:14:14-03:00</published><updated>2024-11-23T12:14:14-03:00</updated><id>http://localhost:4000/2024/11/23/hello-word</id><content type="html" xml:base="http://localhost:4000/2024/11/23/hello-word.html"><![CDATA[<p>#Welcome to my tech space!</p>
 
 <p>I’ve been a professional developer since 2010, with an unwavering passion for technology and innovation. My expertise lies in the <strong>.NET</strong> platform and <strong>SQL Server</strong>, but my path has also led me to explore other tools and languages, such as <strong>Angular</strong>, <strong>React</strong>, <strong>Java</strong>, <strong>Python</strong>, and even <strong>Delphi</strong>. With over a decade of experience, I’ve developed a keen eye for <strong>data modeling</strong> and <strong>robust solutions</strong>, aligned with the best practices in the market.</p>
 
@@ -173,7 +332,7 @@ Set up a continuous integration and deployment pipeline with GitHub Actions or A
   <li>💼 <a href="https://linkedin.com/in/ajmarzola">My LinkedIn</a></li>
   <li>💻 <a href="https://github.com/ajmarzola">My GitHub</a></li>
   <li>✉️ <a href="mailto:ajmarzola@gmail.com">Get in touch</a></li>
-</ul>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[#Welcome to my tech space!]]></summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2024/11/22/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2024-11-22T22:14:14-03:00</published><updated>2024-11-22T22:14:14-03:00</updated><id>http://localhost:4000/jekyll/update/2024/11/22/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2024/11/22/welcome-to-jekyll.html"><![CDATA[<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+</ul>]]></content><author><name>Start Bootstrap</name></author><summary type="html"><![CDATA[#Welcome to my tech space!]]></summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/2024/11/22/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2024-11-22T22:14:14-03:00</published><updated>2024-11-22T22:14:14-03:00</updated><id>http://localhost:4000/2024/11/22/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/2024/11/22/welcome-to-jekyll.html"><![CDATA[<p>You’ll find this post in your <code class="language-plaintext highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="language-plaintext highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
 
 <p>Jekyll requires blog post files to be named according to the following format:</p>
 
@@ -189,4 +348,4 @@ Set up a continuous integration and deployment pipeline with GitHub Actions or A
 <span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
 <span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
 
-<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>]]></content><author><name></name></author><category term="jekyll" /><category term="update" /><summary type="html"><![CDATA[You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.]]></summary></entry></feed>
+<p>Check out the <a href="https://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>]]></content><author><name>Start Bootstrap</name></author><summary type="html"><![CDATA[You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.]]></summary></entry></feed>
