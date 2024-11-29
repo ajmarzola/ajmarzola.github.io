@@ -3,3 +3,6 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+/.vs/ajmarzola.github.io
+/.vs/ajmarzola.github.io/CopilotIndices/17.12.31.40377/SemanticSymbols.db-wal
+/.vs/slnx.sqlite
