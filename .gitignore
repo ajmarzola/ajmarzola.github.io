@@ -1,5 +1,5 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
-/.vs/ajmarzola.github.io/CopilotIndices/17.12.31.40377
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
