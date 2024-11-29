@@ -28,10 +28,29 @@ github_username:  ajmarzola
 markdown: kramdown
 
 # Build settings
-theme: minima
+theme: bulma-clean-theme
+remote_theme: chrisrhymes/bulma-clean-theme@v0.14.0
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+
+# Autor
+author:
+  name: Anderson Marzola
+  email: ajmarzola@gmail.com
+  bio: "Desenvolvedor apaixonado por tecnologia e aprendizado."
+  avatar: /assets/images/avatar.png
+
+# Configurações do tema
+bulma_clean_theme:
+  navbar_brand: Anderson Marzola - System Architect
+  navbar_links:
+    - title: About
+      url: /about/
+    - title: Contact
+      url: /contact/
+  footer_text: "© 2024 Anderson Marzola - System Architect. Todos os direitos reservados."
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.
