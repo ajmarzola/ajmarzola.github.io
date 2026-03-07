@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anderson Marzola | Tech Lead | .NET Architect</title>
+  <meta name="description" content="Anderson Marzola - Tech Lead, .NET Architect and Senior Software Engineer focused on enterprise systems, APIs, cloud, containers, observability and technical leadership." />
+  <style>
+    :root {
+      --bg: #0b1120;
+      --bg-2: #0f172a;
+      --panel: #111827;
+      --panel-2: #172033;
+      --text: #e5eefc;
+      --muted: #9fb0c9;
+      --line: rgba(148, 163, 184, 0.18);
+      --accent: #38bdf8;
+      --accent-2: #60a5fa;
+      --shadow: 0 16px 40px rgba(0,0,0,.32);
+      --radius: 22px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top right, rgba(56,189,248,.10), transparent 20%),
+        radial-gradient(circle at bottom left, rgba(96,165,250,.08), transparent 22%),
+        linear-gradient(180deg, #08101c 0%, #0b1120 100%);
+      color: var(--text);
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: #bdeaff; text-decoration: none; }
+    a:hover { color: white; }
+    .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(8,16,28,.72);
+      border-bottom: 1px solid rgba(148,163,184,.10);
+    }
+    .topbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 14px 0;
+    }
+    .brand { font-weight: 700; letter-spacing: .02em; }
+    .nav { display: flex; flex-wrap: wrap; gap: 14px; }
+    .nav a { color: var(--muted); font-size: 14px; }
+    .nav a:hover { color: white; }
+    .hero {
+      padding: 32px 0 18px;
+    }
+    .hero-box {
+      display: grid; grid-template-columns: 1.2fr .8fr; gap: 22px;
+      background: linear-gradient(145deg, rgba(15,23,42,.96), rgba(9,15,28,.96));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 32px;
+      overflow: hidden;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px; border-radius: 999px;
+      background: rgba(56,189,248,.10); color: #ccefff;
+      border: 1px solid rgba(56,189,248,.18);
+      text-transform: uppercase; letter-spacing: .06em; font-size: 12px; font-weight: 700;
+    }
+    h1 { font-size: 48px; line-height: 1.04; margin: 14px 0 8px; }
+    .hero h2 { font-size: 22px; color: #c2d8ff; margin: 0 0 14px; }
+    .lead { font-size: 18px; color: var(--muted); max-width: 720px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 18px; border-radius: 14px;
+      border: 1px solid var(--line); background: rgba(255,255,255,.03);
+      color: var(--text); font-weight: 700;
+    }
+    .btn.primary {
+      background: linear-gradient(90deg, rgba(56,189,248,.22), rgba(96,165,250,.20));
+      border-color: rgba(96,165,250,.30);
+    }
+    .hero-side { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .mini {
+      background: linear-gradient(180deg, rgba(17,24,39,.95), rgba(13,19,33,.95));
+      border: 1px solid var(--line); border-radius: 18px; padding: 18px;
+    }
+    .mini .label { font-size: 12px; text-transform: uppercase; color: var(--muted); letter-spacing: .06em; }
+    .mini .value { font-size: 24px; font-weight: 800; margin: 6px 0 4px; }
+    .mini p { margin: 0; color: var(--muted); font-size: 14px; }
+    .banner { margin-top: 18px; }
+    .banner img { width: 100%; display: block; border-radius: 24px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+    section { padding: 18px 0 4px; }
+    .section-title { font-size: 30px; margin: 10px 0 6px; }
+    .section-intro { color: var(--muted); margin: 0 0 16px; }
+    .panel {
+      background: linear-gradient(180deg, rgba(17,24,39,.96), rgba(13,19,33,.96));
+      border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 24px;
+    }
+    .badge-wrap { display: flex; flex-wrap: wrap; gap: 10px; }
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .kpi {
+      background: rgba(255,255,255,.02); border: 1px solid var(--line); border-radius: 18px; padding: 18px;
+    }
+    .kpi strong { display: block; font-size: 24px; margin-bottom: 6px; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .project-card {
+      background: linear-gradient(180deg, rgba(17,24,39,.96), rgba(13,19,33,.96));
+      border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 24px;
+    }
+    .project-card h3 { margin: 0 0 8px; }
+    .meta { color: var(--muted); font-size: 14px; margin-bottom: 10px; }
+    .project-card ul { margin: 12px 0 0; padding-left: 18px; color: var(--muted); }
+    .project-card p { margin: 10px 0 0; }
+    .project-card .stack { color: #dbeafe; }
+    .stats img { width: 100%; height: auto; display: block; }
+    .timeline-item { padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .timeline-item:last-child { border-bottom: 0; }
+    .muted { color: var(--muted); }
+    .note {
+      border-left: 4px solid var(--accent); background: rgba(56,189,248,.06);
+      border-radius: 12px; padding: 14px 16px; color: #d5f2ff;
+    }
+    footer { padding: 26px 0 36px; color: var(--muted); }
+    @media (max-width: 920px) {
+      .hero-box, .hero-side, .grid-2, .kpis { grid-template-columns: 1fr; }
+      h1 { font-size: 38px; }
+      .topbar-inner { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">Anderson Marzola</div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#stack">Stack</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section class="hero" id="about">
+      <div class="hero-box">
+        <div>
+          <span class="eyebrow">Portfolio • Architecture • Technical Leadership</span>
+          <h1>Anderson Marzola</h1>
+          <h2>Tech Lead • .NET Architect • Senior Software Engineer</h2>
+          <p class="lead">
+            Software engineer since 2010, with 15+ years of experience in enterprise software, APIs,
+            system architecture and technical leadership. I focus on .NET, Azure, SQL Server, Angular,
+            containers, observability and practical cloud-native delivery.
+          </p>
+          <p class="lead">
+            My background combines hands-on engineering, solution design, code review, production support,
+            requirements analysis and technical guidance for business-critical systems.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="https://github.com/ajmarzola">View GitHub</a>
+            <a class="btn" href="cv/Anderson_Marzola_CV.pdf">Download CV</a>
+            <a class="btn" href="#projects">Featured Projects</a>
+            <a class="btn" href="#contact">Contact</a>
+          </div>
+        </div>
+        <div class="hero-side">
+          <div class="mini">
+            <div class="label">Experience</div>
+            <div class="value">15+ years</div>
+            <p>Building software since 2010.</p>
+          </div>
+          <div class="mini">
+            <div class="label">Current Focus</div>
+            <div class="value">.NET & Azure</div>
+            <p>Architecture, APIs, cloud and delivery quality.</p>
+          </div>
+          <div class="mini">
+            <div class="label">Current Role</div>
+            <div class="value">Tech Lead</div>
+            <p>Hands-on leadership, code review and solution design.</p>
+          </div>
+          <div class="mini">
+            <div class="label">Academic Milestone</div>
+            <div class="value">FIAP 2026</div>
+            <p>Postgraduate degree in .NET Systems Architecture completed in March 2026.</p>
+          </div>
+        </div>
+      </div>
+      <div class="banner">
+        <img src="assets/executive-banner.svg" alt="Executive portfolio banner" />
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Executive Summary</h2>
+      <div class="panel">
+        <p>
+          I am a <strong>Senior Systems Analyst and Tech Lead at FIESP</strong>, working on enterprise applications,
+          web services, integrations and production environments. My recent work emphasizes <strong>C#/.NET</strong>,
+          <strong>SQL Server</strong>, <strong>Azure</strong>, <strong>Angular</strong>, technical leadership and
+          cloud-oriented solution design.
+        </p>
+        <p>
+          My professional profile is centered on <strong>distributed architecture</strong>, <strong>REST APIs</strong>,
+          <strong>containers</strong>, <strong>observability</strong>, <strong>CI/CD</strong> and team enablement.
+          I also have experience with requirement analysis, database management, modernization initiatives and
+          support for production systems.
+        </p>
+        <p>
+          I recently completed a <strong>Postgraduate Degree in .NET Systems Architecture at FIAP</strong>, which further
+          strengthened my portfolio in microservices, messaging, Kubernetes, GitHub Actions and cloud-native practices.
+        </p>
+      </div>
+    </section>
+
+    <section id="stack">
+      <h2 class="section-title">Core Stack</h2>
+      <p class="section-intro">The technologies and practices most aligned with my CV and current professional direction.</p>
+      <div class="panel">
+        <div class="badge-wrap">
+          <img alt="C#" src="https://img.shields.io/badge/C%23-5C2D91?style=for-the-badge&logo=csharp&logoColor=white" />
+          <img alt=".NET" src="https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" />
+          <img alt="ASP.NET Core" src="https://img.shields.io/badge/ASP.NET%20Core-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" />
+          <img alt="Angular" src="https://img.shields.io/badge/Angular-0F0F11?style=for-the-badge&logo=angular&logoColor=white" />
+          <img alt="React" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+          <img alt="SQL Server" src="https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white" />
+          <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white" />
+          <img alt="Azure" src="https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white" />
+          <img alt="Docker" src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+          <img alt="Kubernetes" src="https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white" />
+          <img alt="GitHub Actions" src="https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" />
+          <img alt="REST APIs" src="https://img.shields.io/badge/REST%20APIs-111827?style=for-the-badge" />
+          <img alt="Microservices" src="https://img.shields.io/badge/Microservices-111827?style=for-the-badge" />
+          <img alt="Messaging" src="https://img.shields.io/badge/Messaging-111827?style=for-the-badge" />
+          <img alt="JWT/OAuth" src="https://img.shields.io/badge/JWT%2FOAuth-111827?style=for-the-badge" />
+          <img alt="Observability" src="https://img.shields.io/badge/Observability-111827?style=for-the-badge" />
+          <img alt="CI/CD" src="https://img.shields.io/badge/CI%2FCD-111827?style=for-the-badge" />
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Value Proposition</h2>
+      <div class="kpis">
+        <div class="kpi"><strong>Architecture</strong> Enterprise APIs, distributed systems and scalable solution design.</div>
+        <div class="kpi"><strong>Leadership</strong> Hands-on technical guidance, code review and team coordination.</div>
+        <div class="kpi"><strong>Cloud</strong> Azure, Docker, Kubernetes, GitHub Actions and production-readiness.</div>
+        <div class="kpi"><strong>Execution</strong> Practical engineering, requirements analysis and maintainable delivery.</div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-intro">Selected portfolio themes aligned with my postgraduate work and current architectural direction.</p>
+      <div class="grid-2">
+        <article class="project-card">
+          <h3>FIAP Cloud Games</h3>
+          <div class="meta">Cloud-native architecture • microservices • observability</div>
+          <p>
+            A flagship postgraduate project designed to demonstrate a production-oriented platform with distributed services,
+            messaging, containerization and operational visibility.
+          </p>
+          <ul>
+            <li>Microservices architecture organized by business capability</li>
+            <li>Containerized services with Docker</li>
+            <li>Kubernetes orchestration and scalable deployment model</li>
+            <li>Observability with Prometheus and Grafana</li>
+          </ul>
+          <p class="stack"><strong>Stack:</strong> .NET • Azure • Docker • Kubernetes • Messaging • Monitoring</p>
+          <p><a href="https://github.com/ajmarzola?tab=repositories">Open repositories →</a></p>
+        </article>
+
+        <article class="project-card">
+          <h3>AgroSolutions</h3>
+          <div class="meta">Distributed platform • deployment strategy • infrastructure maturity</div>
+          <p>
+            A modular architecture proposal focused on service decomposition, environment organization,
+            observability and technical consistency across local and cloud scenarios.
+          </p>
+          <ul>
+            <li>Service-oriented decomposition and clean project structure</li>
+            <li>Container-first execution strategy</li>
+            <li>Environment overlays and deployment organization</li>
+            <li>Monitoring and telemetry as part of the architecture baseline</li>
+          </ul>
+          <p class="stack"><strong>Stack:</strong> .NET • Docker • Kubernetes • YAML • Monitoring • DevOps</p>
+          <p><a href="https://github.com/ajmarzola?tab=repositories">Open repositories →</a></p>
+        </article>
+
+        <article class="project-card">
+          <h3>Digital Certificate Signing Solution</h3>
+          <div class="meta">Document signing • browser extension flow • backend integration</div>
+          <p>
+            Architecture proposal for secure PDF signing using Brazilian digital certificates,
+            combining user workflow, backend API integration and cloud storage strategy.
+          </p>
+          <ul>
+            <li>Certificate selection and signing flow design</li>
+            <li>Secure backend integration for PDF processing</li>
+            <li>Product-oriented approach for enterprise use cases</li>
+            <li>Azure-compatible storage flow for signed documents</li>
+          </ul>
+          <p class="stack"><strong>Stack:</strong> .NET • Web API • PDF • Certificates • Azure Blob Storage</p>
+        </article>
+
+        <article class="project-card">
+          <h3>News Aggregator App</h3>
+          <div class="meta">API integrations • mobile concept • personalized content delivery</div>
+          <p>
+            A cloud-first solution concept that combines personalized news aggregation,
+            external API integrations, notifications and shareable content generation.
+          </p>
+          <ul>
+            <li>Interest-based aggregation with custom API strategy</li>
+            <li>Mobile application concept with .NET MAUI</li>
+            <li>Integration model for public feeds and external content sources</li>
+            <li>Push notifications and shareable cards planning</li>
+          </ul>
+          <p class="stack"><strong>Stack:</strong> .NET MAUI • ASP.NET Core • Azure • Cosmos DB • Notification Hubs</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">GitHub Presence</h2>
+      <div class="grid-2 stats">
+        <div class="panel">
+          <h3>Contribution Activity</h3>
+          <p class="muted">Live graph highlighting consistent engineering work and public portfolio activity.</p>
+          <img alt="GitHub Contribution Graph" src="https://github-readme-activity-graph.vercel.app/graph?username=ajmarzola&theme=github-dark&hide_border=true&area=true" />
+        </div>
+        <div class="panel">
+          <h3>GitHub Metrics</h3>
+          <p class="muted">Helpful visual signals for recruiters, peers and technical stakeholders.</p>
+          <img alt="GitHub Stats" src="https://github-readme-stats.vercel.app/api?username=ajmarzola&show_icons=true&theme=transparent&hide_border=true" />
+          <div style="height:16px"></div>
+          <img alt="Top Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ajmarzola&layout=compact&theme=transparent&hide_border=true" />
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2 class="section-title">Experience & Education</h2>
+      <div class="grid-2">
+        <div class="panel">
+          <h3>Professional Snapshot</h3>
+          <div class="timeline-item">
+            <strong>Senior Systems Analyst</strong> • FIESP<br />
+            <span class="muted">July 2019 – Present</span>
+            <p class="muted">
+              Technical leadership, code review, web applications, web services, Azure environment management,
+              requirements analysis and SQL Server-based enterprise systems.
+            </p>
+          </div>
+          <div class="timeline-item">
+            <strong>Senior Developer / Programmer Roles</strong><br />
+            <span class="muted">2010 – 2019</span>
+            <p class="muted">
+              Experience across document management systems, e-commerce, ERP support, desktop applications,
+              web systems, integrations, Oracle and SQL Server environments, training and support.
+            </p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Education</h3>
+          <div class="timeline-item">
+            <strong>Postgraduate Degree in .NET Systems Architecture</strong><br />
+            <span class="muted">FIAP • Completed in March 2026</span>
+          </div>
+          <div class="timeline-item">
+            <strong>Technologist Degree in Data Processing</strong><br />
+            <span class="muted">FATEC-SP • Completed in December 2012</span>
+          </div>
+          <div class="timeline-item">
+            <strong>Technical Degree in Electronics</strong><br />
+            <span class="muted">Liceu de Artes e Ofícios de São Paulo • Completed in December 2004</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">CV & Contact</h2>
+      <div class="panel">
+        <p>
+          This page is intended to serve as the professional entry point to my GitHub presence.
+          For opportunities involving technical leadership, .NET architecture and enterprise engineering,
+          please use the contact details below.
+        </p>
+        <div class="note">
+          You can further personalize this section by adding your final LinkedIn URL and repository-specific project links.
+        </div>
+        <p>
+          <strong>CV:</strong> <a href="cv/Anderson_Marzola_CV.pdf">Download PDF</a><br />
+          <strong>GitHub:</strong> <a href="https://github.com/ajmarzola">github.com/ajmarzola</a><br />
+          <strong>Email:</strong> <a href="mailto:ajmarzola@gmail.com">ajmarzola@gmail.com</a><br />
+          <strong>Location:</strong> Tucuruvi, São Paulo - SP, Brazil
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Designed as a curated, senior-level portfolio with a clear architecture and technical leadership positioning.</div>
+  </footer>
+</body>
+</html>
